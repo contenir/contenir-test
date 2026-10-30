@@ -1,0 +1,29 @@
+{
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": ["src"]
+    },
+    "timeout": 10,
+    "threads": "max",
+    "logs": {
+        "text": "infection.log",
+        "summary": "summary.log",
+        "stryker": {
+            "badge": "/^(main|master)$/"
+        }
+    },
+    "mutators": {
+        "@default": true,
+        // A trait's private methods are as callable from the class using it as its protected ones; they are
+        // protected so a test's own base class can use the trait for the tests that extend it.
+        "ProtectedVisibility": {
+            "ignore": ["Contenir\\Test\\Trait\\*"]
+        },
+        // Removing the scratch directory needs only that its owner may list, enter and write each directory,
+        // which a mode one above 0o700 allows as well.
+        "IncrementInteger": {
+            "ignore": ["Contenir\\Test\\Trait\\TemporaryDirectoryTrait::tearDownTemporaryDirectory"]
+        }
+    },
+    "staticAnalysisTool": "mago"
+}
