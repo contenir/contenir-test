@@ -6,6 +6,8 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-30
+
 ### Added
 
 - `Container\ArrayContainer`: a PSR-11 container over services and factories, a factory's service built once, with
